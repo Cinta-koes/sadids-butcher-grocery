@@ -2,6 +2,7 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const filterButtons = document.querySelectorAll(".filter-button");
 const productItems = document.querySelectorAll(".product-item");
+const carousels = document.querySelectorAll("[data-carousel]");
 
 navToggle.addEventListener("click", () => {
   const isOpen = navLinks.classList.toggle("open");
@@ -28,4 +29,20 @@ filterButtons.forEach((button) => {
       item.classList.toggle("is-hidden", !shouldShow);
     });
   });
+});
+
+carousels.forEach((carousel) => {
+  const images = carousel.querySelectorAll(".carousel-image");
+  const previousButton = carousel.querySelector("[data-carousel-prev]");
+  const nextButton = carousel.querySelector("[data-carousel-next]");
+  let activeIndex = 0;
+
+  const showImage = (nextIndex) => {
+    images[activeIndex].classList.remove("active");
+    activeIndex = (nextIndex + images.length) % images.length;
+    images[activeIndex].classList.add("active");
+  };
+
+  previousButton.addEventListener("click", () => showImage(activeIndex - 1));
+  nextButton.addEventListener("click", () => showImage(activeIndex + 1));
 });

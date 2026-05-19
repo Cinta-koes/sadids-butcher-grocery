@@ -246,6 +246,23 @@ a {
   line-height: 1.05;
 }
 
+.poster-announcement {
+  display: grid;
+  min-height: 120px;
+  align-content: end;
+}
+
+.poster-announcement h2 {
+  max-width: 420px;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Cooper Black", "Arial Rounded MT Bold", Georgia, serif;
+  font-size: clamp(1.15rem, 2.5vw, 1.85rem);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
 .photo-card-content p {
   margin: 0;
 }
@@ -257,35 +274,6 @@ a {
   text-transform: uppercase;
 }
 
-.info-strip {
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.info-strip div {
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 20px;
-  background: var(--surface);
-  box-shadow: 0 14px 34px rgba(16, 58, 27, 0.08);
-}
-
-.info-strip span {
-  display: block;
-  color: var(--muted);
-  font-size: 0.8rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.info-strip strong {
-  display: block;
-  margin-top: 4px;
-}
 
 .section {
   width: min(1120px, calc(100% - 32px));
@@ -365,6 +353,7 @@ a {
   object-fit: cover;
   background: var(--surface-soft);
 }
+
 
 .menu-item.is-hidden {
   display: none;
@@ -514,17 +503,17 @@ a {
     padding-top: 56px;
   }
 
-  .info-strip,
   .menu-grid {
     grid-template-columns: 1fr;
   }
+
+
 }
 
 @media (max-width: 540px) {
   .navbar,
   .hero,
-  .section,
-  .info-strip {
+  .section {
     width: min(100% - 24px, 1120px);
   }
 
@@ -548,4 +537,57 @@ a {
   .uber-section {
     padding: 24px;
   }
+}
+
+.image-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--surface-soft);
+}
+
+.carousel-track {
+  position: relative;
+  min-height: 250px;
+}
+
+.carousel-image {
+  display: none;
+  margin: 0;
+}
+
+.carousel-image.active {
+  display: block;
+}
+.image-carousel .menu-photo {
+  height: 250px;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(15, 71, 37, 0.86);
+  color: #ffffff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(16, 58, 27, 0.22);
+}
+
+.carousel-control:hover,
+.carousel-control:focus {
+  background: var(--primary);
+}
+
+.carousel-prev {
+  left: 14px;
+}
+
+.carousel-next {
+  right: 14px;
 }
